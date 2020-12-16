@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [vtinfo]
 * Added scope parameter to refresh token request
+* getRedirectURL() will not log a warning for PHP 7.1+
 
 ## [0.9.2]
 
