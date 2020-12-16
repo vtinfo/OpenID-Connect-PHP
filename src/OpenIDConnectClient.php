@@ -688,19 +688,19 @@ class OpenIDConnectClient
      *
      * @throws OpenIDConnectClientException
      */
-    public function requestClientCredentialsToken() {
+    public function requestClientCredentialsToken(array $morePostData = []) {
         $token_endpoint = $this->getProviderConfigValue('token_endpoint');
 
         $headers = [];
 
         $grant_type = 'client_credentials';
 
-        $post_data = array(
+        $post_data = array_merge(array(
             'grant_type'    => $grant_type,
             'client_id'     => $this->clientID,
             'client_secret' => $this->clientSecret,
             'scope'         => implode(' ', $this->scopes)
-        );
+        ), $morePostData);
 
         // Convert token params to string format
         $post_params = http_build_query($post_data, null, '&', $this->enc_type);
