@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [vtinfo]
 * Added scope parameter to refresh token request
 * getRedirectURL() will not log a warning for PHP 7.1+
+* getSessionKey() undefined key fix
+* requestClientCredentialsToken() more post data support
+* more var undefined fixes in getRedirectURL()
+
 
 ## [0.9.2]
 

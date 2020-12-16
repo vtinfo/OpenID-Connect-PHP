@@ -1736,7 +1736,7 @@ class OpenIDConnectClient
     protected function getSessionKey($key) {
         $this->startSession();
 
-        return $_SESSION[$key];
+        return $_SESSION[$key] ?? null;
     }
 
     protected function setSessionKey($key, $value) {
