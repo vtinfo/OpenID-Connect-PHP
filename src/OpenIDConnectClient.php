@@ -588,13 +588,13 @@ class OpenIDConnectClient
         if (isset($_SERVER['HTTP_UPGRADE_INSECURE_REQUESTS']) && ($_SERVER['HTTP_UPGRADE_INSECURE_REQUESTS'] === '1')) {
             $protocol = 'https';
         } else {
-            $protocol = @$_SERVER['HTTP_X_FORWARDED_PROTO']
+            $protocol = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? null
                 ?: @$_SERVER['REQUEST_SCHEME']
                     ?: ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http');
         }
 
-        $port = @intval($_SERVER['HTTP_X_FORWARDED_PORT'])
-            ?: @intval($_SERVER['SERVER_PORT'])
+        $port = @intval($_SERVER['HTTP_X_FORWARDED_PORT'] ?? null)
+            ?: @intval($_SERVER['SERVER_PORT'] ?? null)
                 ?: (($protocol === 'https') ? 443 : 80);
 
         $host = @explode(':', $_SERVER['HTTP_HOST'])[0]
